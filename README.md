@@ -15,15 +15,15 @@ Intruder.py - A powerful tool to customize attacks on websites. Has 4 different 
 4. run the program as you like with: `python3 intruder.py [OPTIONS]...`
 
 ## Usage:
-1. Create a file with a POST\GET request. (Use burp and copy+paste the request to a empty file).
+1. Create a file with a POST\GET request. (Use BurpSuite and copy+paste the request to an empty file).
 2. Mark the variables you want to run payloads on Example in the request: `username=var1`. Say i want to run a sniper attack on `var1`. I'll just mark the variable like so: `$var1$`.
-	* You can use any kind of sign. Intruder will prompt you to specify which sign you used as a marker.
-3. Run the Intruder and give it a payload(s) set(s) and specify other options if you want to.
-4. A main-menu will be prompted to ask what attack you would like to use.
+	* You can use any kind of sign. Intruder will prompt you to specify which sign you used as a marker (By default, it's set to dollar-signs '$').
+3. Run the Intruder, give it a payload(s) set(s) and specify other options if you want to. Add the required argument, `request_file`.
+4. A main-menu will be prompted to ask what attack type you would like to use.
 5. Make your choice and let the program run.
-6. Finally, a table will be printed to stdout and saved to an output file (Dafault: 'output.txt' - you can change that with `-o`)
+6. Finally, a table will be printed to stdout and saved to an output file (By dafault: `'output.txt'` - you can change that with `-o`)
 
-* usage: `intruder.py [-h] -p --payloads_sets PAYLOADS_SETS [PAYLOADS_SETS ...] [-o OUTPUT_PATH] [-s SLEEP] [-v] request_file`
+**`intruder.py [-h] -p --payloads_sets PAYLOADS_SETS [PAYLOADS_SETS ...] [-o OUTPUT_PATH] [-s SLEEP] [-v] request_file`**
 
 * Intruder is a powerful tool for automating customized attacks against web applications. It can be used to automate all kinds
 of tasks that may arise during your testing.
