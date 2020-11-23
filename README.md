@@ -9,7 +9,7 @@ Intruder.py - A powerful tool to customize attacks on websites. Has 4 different 
     payloads per position.
 
 ## Installation:
-1. Get the Burpee module from https://github.com/xscorp/Burpee and add it to your packages folder in the enviorment you are using.
+1. Add the Burpee module provided in the main branch to your modules folder or get it from the source: https://github.com/xscorp/Burpee.
 2. 'git-clone https://github.com/RhoTau42/Intruder'
 3. 'cd Intruder/'
 4. run the program as you like with: `python3 intruder.py [OPTIONS]...`
