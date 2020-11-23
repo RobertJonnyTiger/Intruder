@@ -26,4 +26,10 @@ of tasks that may arise during your testing.
   * `-s SLEEP`, `--sleep SLEEP`
                         Sets a sleep timer (in secs) between requests.
   * `-v`, `--verbose`         Verbose mode to show errors
+  
+  **Example**: `python3 intruder.py -p payload_set1 payload_set2 payload_set3 -o ouput.txt -s 0.75 -v`
+  
+  ## Requiremnts:
+  * Burpee lib: https://github.com/xscorp/Burpee
+  * Python
 
