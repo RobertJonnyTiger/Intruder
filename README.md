@@ -8,6 +8,12 @@ Intruder.py - A powerful tool to customize attacks on websites. Has 4 different 
 * **Cluster-Bomb**: Allows up to 20 payloads, 1 payload for each position marked. Tries all possible combinations of
     payloads per position.
 
+## Installation:
+1. Get the Burpee module from https://github.com/xscorp/Burpee and add it to your packages folder in the enviorment you are using.
+2. 'git-clone https://github.com/RhoTau42/Intruder'
+3. 'cd Intruder/'
+4. run the program as you like.
+
 ## Usage:
 * usage: `intruder.py [-h] -p --payloads_sets PAYLOADS_SETS [PAYLOADS_SETS ...] [-o OUTPUT_PATH] [-s SLEEP] [-v] request_file`
 
@@ -30,6 +36,6 @@ of tasks that may arise during your testing.
   **Example**: `python3 intruder.py -p payload_set1 payload_set2 payload_set3 -o ouput.txt -s 0.75 -v`
   
   ## Requiremnts:
-  * Burpee lib: https://github.com/xscorp/Burpee
+  * Burpee module: https://github.com/xscorp/Burpee
   * Python
 
