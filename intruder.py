@@ -101,7 +101,7 @@ dest_url = Destination URL for the requests."""
 
 	# Request Data\Params Builder. Depending on METHOD:
 	if METHOD == 'POST':
-		print(f'{info}%s%sRequest Method%s: {METHOD}' % (bold, underline, end))
+		print(f'{info}%s%s Request Method%s: {METHOD}' % (bold, underline, end))
 		parameters = POST_data.strip().split('&')
 		data_dict = {}
 		for f in parameters:
@@ -117,6 +117,12 @@ dest_url = Destination URL for the requests."""
 
 def sniper(dest_url: str, data_dict: dict) -> str:
 	"""This uses a single set of payloads_sets. It targets each payload position in turn, and places each payload into that position in turn."""
+	# Check amount of payloads_sets:
+	if len(payloads_sets) >= 2:
+		print(f"{bad} %s%sDetected multiple sets of payloads!%s" % (underline, bold, end))
+		print(f"{info} %s%sSniper method takes only 1 payload set.%s First payload "
+	                                  f"provided will "
+	                                  "be used now." % (bold, yellow, end))
 	# Builds payloads list:
 	with open(payloads_sets[0]) as file:
 		payloads = []
@@ -163,6 +169,13 @@ def sniper(dest_url: str, data_dict: dict) -> str:
 
 def battering_ram(dest_url: str, data_dict: dict) -> str:
 	"""Allows only 1 payload, runs on ALL the marked positions in the same time. Prints results to stdout."""
+	# Check amount of payloads_sets:
+	if len(payloads_sets) >= 2:
+		print(f"{bad} %s%sDetected multiple sets of payloads!%s" % (underline, bold, end))
+		print(f"{info} %s%sBattering-Ram method takes only 1 payload set.%s First payload "
+		      f"provided will "
+		      "be used now." % (bold, yellow, end))
+		
 	# Builds payloads list:
 	with open(payloads_sets[0]) as file:
 		payloads = []
