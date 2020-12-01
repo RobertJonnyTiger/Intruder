@@ -101,7 +101,7 @@ dest_url = Destination URL for the requests."""
 
 	# Request Data\Params Builder. Depending on METHOD:
 	if METHOD == 'POST':
-		print(f'{info}%s%sRequest Method%s: {METHOD}' % (bold, underline, end))
+		print(f'{info}%s%s Request Method%s: {METHOD}' % (bold, underline, end))
 		parameters = POST_data.strip().split('&')
 		data_dict = {}
 		for f in parameters:
@@ -117,6 +117,12 @@ dest_url = Destination URL for the requests."""
 
 def sniper(dest_url: str, data_dict: dict) -> str:
 	"""This uses a single set of payloads_sets. It targets each payload position in turn, and places each payload into that position in turn."""
+	# Check amount of payloads_sets:
+	if len(payloads_sets) >= 2:
+		print(f"{bad} %s%sDetected multiple sets of payloads!%s" % (underline, bold, end))
+		print(f"{info} %s%sSniper method takes only 1 payload set.%s First payload "
+	                                  f"provided will "
+	                                  "be used now." % (bold, yellow, end))
 	# Builds payloads list:
 	with open(payloads_sets[0]) as file:
 		payloads = []
@@ -142,7 +148,7 @@ def sniper(dest_url: str, data_dict: dict) -> str:
 				Status_Code.append(response.status_code); Content.append(content); Content_Length.append(len(content))
 			except Exception as error:
 				print(f"\n{bad}%s%s Connection Refused%s (--verbose to check error)" % (bold, red, end))
-				if verbose: print(f'%sError Message%s: {error}' % (underline, end))
+				if verbose: print(f'%sError Message%s:\n{error}' % (underline, end))
 				print(f'{tab}%sPayload%s: {data_dict[key]}' % (underline, end))
 				print(f'{tab}%sPosition%s: {position}' % (underline, end))
 				Status_Code.append('None'); Content.append('[X] Error'); Content_Length.append('None')
@@ -163,6 +169,13 @@ def sniper(dest_url: str, data_dict: dict) -> str:
 
 def battering_ram(dest_url: str, data_dict: dict) -> str:
 	"""Allows only 1 payload, runs on ALL the marked positions in the same time. Prints results to stdout."""
+	# Check amount of payloads_sets:
+	if len(payloads_sets) >= 2:
+		print(f"{bad} %s%sDetected multiple sets of payloads!%s" % (underline, bold, end))
+		print(f"{info} %s%sBattering-Ram method takes only 1 payload set.%s First payload "
+		      f"provided will "
+		      "be used now." % (bold, yellow, end))
+		
 	# Builds payloads list:
 	with open(payloads_sets[0]) as file:
 		payloads = []
@@ -184,7 +197,7 @@ def battering_ram(dest_url: str, data_dict: dict) -> str:
 			Status_Code.append(response.status_code); Content.append(content); Content_Length.append(len(content))
 		except Exception as error:
 			print(f"\n{bad}%s%s Connection Refused%s (--verbose to check error)" % (bold, red, end))
-			if verbose: print(f'%sError Message%s: {error}' % (underline, end))
+			if verbose: print(f'%sError Message%s:\n{error}' % (underline, end))
 			print(f'{tab}%sPayload%s: {data_dict[key]}' % (underline, end))
 			Status_Code.append('None'); Content.append('[X] Error'); Content_Length.append('None')
 			pass
@@ -220,7 +233,7 @@ def pitchfork(dest_url: str, data_dict: dict) -> str:
 	for cur_values in zip(*payloads_list_of_lists):
 		named_values = zip(data_dict.keys(), cur_values)
 		payloads_for_request = dict(named_values)
-		
+		print(dest_url)
 		# Starts sending requests for each data dict created:
 		try:
 			request_counter += 1
@@ -231,7 +244,7 @@ def pitchfork(dest_url: str, data_dict: dict) -> str:
 			Status_Code.append(response.status_code); Content.append(content); Content_Length.append(len(content))
 		except Exception as error:
 			print(f"\n{bad}%s%s Connection Refused%s (--verbose to check error)" % (bold, red, end))
-			if verbose: print(f'%sError Message%s: {error}' % (underline, end))
+			if verbose: print(f'%sError Message%s:\n{error}' % (underline, end))
 			print(f'{tab}%sPayloads%s: {payloads_for_request}' % (underline, end))
 			Status_Code.append('None');	Content.append('[X] Error'); Content_Length.append('None')
 			pass
@@ -278,7 +291,7 @@ def clusterbomb(dest_url: str, data_dict: dict) -> str:
 			Status_Code.append(response.status_code); Content.append(content); Content_Length.append(len(content))
 		except Exception as error:
 			print(f"\n{bad}%s%s Connection Refused%s (--verbose to check error)" % (bold, red, end))
-			if verbose: print(f'%sError Message%s: {error}' % (underline, end))
+			if verbose: print(f'%sError Message%s:\n{error}' % (underline, end))
 			print(f'{tab}%sPayloads%s: {payloads_for_request}' % (underline, end))
 			Status_Code.append('None');	Content.append('[X] Error'); Content_Length.append('None')
 			pass
